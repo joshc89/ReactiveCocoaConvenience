@@ -35,6 +35,14 @@
 		A57E25A51C9D89FF00A5CB03 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57E25951C9D89B800A5CB03 /* SwiftyJSON.framework */; };
 		A57E25A61C9D8BB300A5CB03 /* ReactiveCocoaConvenience-Alamofire.h in Headers */ = {isa = PBXBuildFile; fileRef = A57E254E1C9D845C00A5CB03 /* ReactiveCocoaConvenience-Alamofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A57E25A71C9D8BBC00A5CB03 /* ReactiveCocoaConvenience-Alamofire-SwiftyJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = A57E256A1C9D846600A5CB03 /* ReactiveCocoaConvenience-Alamofire-SwiftyJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A57E25AA1C9DAA6B00A5CB03 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57E25921C9D89B800A5CB03 /* Alamofire.framework */; };
+		A57E25AB1C9DAA6B00A5CB03 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57E25931C9D89B800A5CB03 /* ReactiveCocoa.framework */; };
+		A57E25AC1C9DAA6B00A5CB03 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57E25941C9D89B800A5CB03 /* Result.framework */; };
+		A57E25AD1C9DAA6B00A5CB03 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57E25951C9D89B800A5CB03 /* SwiftyJSON.framework */; };
+		A57E25AF1C9DAB7000A5CB03 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A57E25921C9D89B800A5CB03 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A57E25B01C9DAB7000A5CB03 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A57E25931C9D89B800A5CB03 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A57E25B11C9DAB7000A5CB03 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A57E25941C9D89B800A5CB03 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A57E25B21C9DAB7000A5CB03 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A57E25951C9D89B800A5CB03 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,22 @@
 			remoteInfo = "ReactiveCocoaConvenience-Alamofire-SwiftyJSON";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A57E25AE1C9DAB6600A5CB03 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A57E25AF1C9DAB7000A5CB03 /* Alamofire.framework in CopyFiles */,
+				A57E25B01C9DAB7000A5CB03 /* ReactiveCocoa.framework in CopyFiles */,
+				A57E25B11C9DAB7000A5CB03 /* Result.framework in CopyFiles */,
+				A57E25B21C9DAB7000A5CB03 /* SwiftyJSON.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A57E252D1C9D830200A5CB03 /* ReactiveCocoaConvenience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveCocoaConvenience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +172,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A57E25721C9D846600A5CB03 /* ReactiveCocoaConvenience_Alamofire_SwiftyJSON.framework in Frameworks */,
+				A57E25AA1C9DAA6B00A5CB03 /* Alamofire.framework in Frameworks */,
+				A57E25AB1C9DAA6B00A5CB03 /* ReactiveCocoa.framework in Frameworks */,
+				A57E25AC1C9DAA6B00A5CB03 /* Result.framework in Frameworks */,
+				A57E25AD1C9DAA6B00A5CB03 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +424,7 @@
 				A57E256D1C9D846600A5CB03 /* Sources */,
 				A57E256E1C9D846600A5CB03 /* Frameworks */,
 				A57E256F1C9D846600A5CB03 /* Resources */,
+				A57E25AE1C9DAB6600A5CB03 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -848,6 +877,10 @@
 		A57E257D1C9D846600A5CB03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ReactiveCocoaConvenience-Alamofire-SwiftyJSONTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.joshcampion.ReactiveCocoaConvenience-Alamofire-SwiftyJSONTests";
@@ -858,6 +891,10 @@
 		A57E257E1C9D846600A5CB03 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ReactiveCocoaConvenience-Alamofire-SwiftyJSONTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.joshcampion.ReactiveCocoaConvenience-Alamofire-SwiftyJSONTests";
