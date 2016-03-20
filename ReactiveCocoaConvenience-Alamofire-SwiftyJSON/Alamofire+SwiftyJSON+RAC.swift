@@ -66,10 +66,10 @@ public extension Request {
      
      - seealso: `rac_responseSwiftyJSON(_:)`
      */
-    public func rac_responseSwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<(JSON, T?), NSError> {
+    public func rac_responseSwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<(JSON, T), NSError> {
         
         return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
-            .flatMap(.Latest) { (json) -> SignalProducer<(JSON, T?), NSError> in
+            .flatMap(.Latest) { (json) -> SignalProducer<(JSON, T), NSError> in
                 
                 do {
                     let created = try T.init(json: json)
