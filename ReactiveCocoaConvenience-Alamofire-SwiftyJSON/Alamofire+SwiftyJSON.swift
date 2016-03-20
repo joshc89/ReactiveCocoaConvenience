@@ -70,5 +70,5 @@ public extension Request {
 
 public protocol JSONCreated {
     
-    init?(json:JSON)
+    init?(json:JSON) throws
 }

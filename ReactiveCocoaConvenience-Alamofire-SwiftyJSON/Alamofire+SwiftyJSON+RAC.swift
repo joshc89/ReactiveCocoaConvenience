@@ -15,6 +15,26 @@ import ReactiveCocoa
 
 import ReactiveCocoaConvenience_Alamofire
 
+public let JSONResponseErrorDomain = "JSONResponseError"
+public let JSONResponseUnexpectedTypeCode = 0
+
+public extension NSError {
+    
+    public static func unexpectedTypeErrorForJSON(json:JSON,
+        expectedType:Type,
+        localizedDescription: String = "Unable to create object.",
+        localizedFailureReason: String = "Unexpected JSON format. Expected '%@', got '%@'") -> NSError {
+        
+            let failureReason = String(format: localizedFailureReason, arguments: ["\(expectedType)", "\(json.type)"])
+            
+            return NSError(domain: JSONResponseErrorDomain,
+                code: JSONResponseUnexpectedTypeCode,
+                userInfo: [NSLocalizedDescriptionKey: localizedDescription,
+                    NSLocalizedFailureReasonErrorKey: failureReason])
+    }
+
+}
+
 public extension Request {
     
     /**
@@ -27,4 +47,86 @@ public extension Request {
         
         return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
     }
+    
+    /**
+     
+     Convenience ReactiveCocoa response using a `swiftyJSONResponseSerializer()` that transforms the `JSON` to a `JSONCreated` object.
+     
+     - returns: A `SignalProducer` with either the `JSONCreated` object as its value or the thrown error from `init(json:)`.
+     
+     - seealso: `rac_responseSwiftyJSON(_:)`
+     */
+    public func rac_responseSwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<T?, NSError> {
+        
+        return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
+            .flatMap(.Latest) { (json) -> SignalProducer<T?, NSError> in
+                
+                do {
+                    let created = try T.init(json: json)
+                    return SignalProducer(value: created)
+                } catch let error as NSError {
+                    return SignalProducer(error: error)
+                }
+        }
+    }
+    
+    /**
+     
+     Convenience ReactiveCocoa response using a `swiftyJSONResponseSerializer()` that transforms the `JSON` to an array of `JSONCreated` objects.
+     
+     - returns: A `SignalProducer` with an array of all the `JSONCreated` objects that didn't throw errors. If the `JSON` returned from the `swiftyJSONResponseSerializer()` is not an `Array` the `SignalProducer` has an error created from `unexpectedTypeErrorForJSON(_:expectedType:)`.
+     
+     - seealso: `rac_responseSwiftyJSON(_:)`
+     */
+    public func rac_responseArraySwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<[T], NSError> {
+        
+        return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
+            .flatMap(.Latest) { (json) -> SignalProducer<[T], NSError> in
+                
+                if let jsonArray = json.array {
+                    
+                    let created = jsonArray.flatMap({ try? T(json: $0) }).flatMap({ $0 })
+                    return SignalProducer(value: created)
+                    
+                } else {
+                    let error = NSError.unexpectedTypeErrorForJSON(json, expectedType: .Array)
+                    return SignalProducer(error: error)
+                }
+        }
+    }
+    
+    /**
+     
+     Convenience ReactiveCocoa response using a `swiftyJSONResponseSerializer()` that transforms the `JSON` to a dictionary of `JSONCreated` objects.
+     
+     - returns: A `SignalProducer` with an dictionary of all the `JSONCreated` objects that didn't throw errors. If the `JSON` returned from the `swiftyJSONResponseSerializer()` is not a `Dictionary` the `SignalProducer` has an error created from `unexpectedTypeErrorForJSON(_:expectedType:)`.
+     
+     - seealso: `rac_responseSwiftyJSON(_:)`
+     */
+    public func rac_responseDictionarySwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<[String:T], NSError> {
+        
+        return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
+            .flatMap(.Latest) { (json) -> SignalProducer<[String:T], NSError> in
+                
+                if let jsonDictionary = json.dictionary {
+                    
+                    var transformed = [String:T](minimumCapacity: jsonDictionary.count)
+                    
+                    for (key, elementJSON) in jsonDictionary {
+                        if let tried = try? T(json: elementJSON),
+                            let element = tried {
+                            transformed[key] = element
+                        }
+                    }
+                    
+                    return SignalProducer(value: transformed)
+                    
+                } else {
+                    let error = NSError.unexpectedTypeErrorForJSON(json, expectedType: .Dictionary)
+                    return SignalProducer(error: error)
+                }
+        }
+    }
+    
+    
 }
