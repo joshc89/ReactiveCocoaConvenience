@@ -72,3 +72,17 @@ public protocol JSONCreated {
     
     init?(json:JSON) throws
 }
+
+public extension String {
+    /// - returns: self if self is not empty, nil otherwise.
+    public var nonEmpty:String? {
+        return self.isEmpty ? nil : self
+    }
+}
+
+public extension Array {
+    /// - returns: self if self is not empty, nil otherwise.
+    public var nonEmpty:Array<Element>? {
+        return self.count > 0 ? self : nil
+    }
+}
