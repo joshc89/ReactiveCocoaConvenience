@@ -17,6 +17,7 @@ import ReactiveCocoaConvenience_Alamofire
 
 public let JSONResponseErrorDomain = "JSONResponseError"
 public let JSONResponseUnexpectedTypeCode = 0
+public let JSONResponseMissingElementCode = 0
 
 public extension NSError {
     
@@ -32,7 +33,16 @@ public extension NSError {
                 userInfo: [NSLocalizedDescriptionKey: localizedDescription,
                     NSLocalizedFailureReasonErrorKey: failureReason])
     }
-
+    
+    public static func missingElementErrorForJSON(json:JSON,
+        localizedDescription: String = "Unable to create object.",
+        localizedFailureReason: String = "Missing required elements.") -> NSError {
+            
+            return NSError(domain: JSONResponseErrorDomain,
+                code: JSONResponseUnexpectedTypeCode,
+                userInfo: [NSLocalizedDescriptionKey: localizedDescription,
+                    NSLocalizedFailureReasonErrorKey: localizedFailureReason])
+    }
 }
 
 public extension Request {
