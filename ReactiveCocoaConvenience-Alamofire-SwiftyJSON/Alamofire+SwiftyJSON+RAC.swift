@@ -95,7 +95,7 @@ public extension Request {
                 
                 if let jsonArray = json.array {
                     
-                    let created = jsonArray.flatMap({ try? T(json: $0) }).flatMap({ $0 })
+                    let created = jsonArray.flatMap({ try? T(json: $0) })
                     return SignalProducer(value: (json, created))
                     
                 } else {
@@ -123,8 +123,7 @@ public extension Request {
                     var transformed = [String:T](minimumCapacity: jsonDictionary.count)
                     
                     for (key, elementJSON) in jsonDictionary {
-                        if let tried = try? T(json: elementJSON),
-                            let element = tried {
+                        if let element = try? T(json: elementJSON) {
                             transformed[key] = element
                         }
                     }
@@ -137,6 +136,5 @@ public extension Request {
                 }
         }
     }
-    
     
 }

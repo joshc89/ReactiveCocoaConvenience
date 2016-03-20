@@ -70,7 +70,7 @@ public extension Request {
 
 public protocol JSONCreated {
     
-    init?(json:JSON) throws
+    init(json:JSON) throws
 }
 
 public extension String {
