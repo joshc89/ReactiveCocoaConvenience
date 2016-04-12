@@ -43,7 +43,9 @@ public extension Request {
                     obs.sendNext(serialized)
                     obs.sendCompleted()
                 case .Failure(let error):
-                    obs.sendFailed(error.copy() as NSError)
+                    let nsError = error as NSError
+                    
+                    obs.sendFailed(NSError(domain: nsError.domain, code: nsError.code, userInfo: nsError.userInfo))
                 }
         }
         
