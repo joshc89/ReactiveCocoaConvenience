@@ -43,7 +43,7 @@ public extension Request {
                     obs.sendNext(serialized)
                     obs.sendCompleted()
                 case .Failure(let error):
-                    obs.sendFailed(response.result.error as NSError)
+                    obs.sendFailed(error.copy() as NSError)
                 }
         }
         
