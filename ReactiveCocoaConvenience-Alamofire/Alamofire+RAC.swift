@@ -28,6 +28,7 @@ public extension Request {
      
      - returns: A `SignalProducer` that resumes the `Request` on starting and receives the result of the `responseSerializer`.
     */
+    /*
     public func rac_response<T: ResponseSerializerType>(queue: dispatch_queue_t? = nil, responseSerializer:T) -> SignalProducer<T.SerializedObject, NSError> {
         
         suspend()
@@ -53,6 +54,7 @@ public extension Request {
             self?.resume()
             })
     }
+    */
     
     /**
      
@@ -62,7 +64,21 @@ public extension Request {
     */
     public func rac_responseData(queue: dispatch_queue_t? = nil) -> SignalProducer<NSData, NSError> {
         
-        return rac_response(queue, responseSerializer: Request.dataResponseSerializer())
+        return SignalProducer<NSData, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.dataResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+        }
     }
     
     /**
@@ -73,7 +89,21 @@ public extension Request {
      */
     public func rac_responseString(queue: dispatch_queue_t? = nil) -> SignalProducer<String, NSError> {
         
-        return rac_response(queue, responseSerializer: Request.stringResponseSerializer())
+        return SignalProducer<String, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.stringResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+        }
     }
     
     /**
@@ -84,7 +114,21 @@ public extension Request {
      */
     public func rac_responseJSON(queue: dispatch_queue_t? = nil) -> SignalProducer<AnyObject, NSError> {
         
-        return rac_response(queue, responseSerializer: Request.JSONResponseSerializer())
+        return SignalProducer<AnyObject, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.JSONResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+        }
     }
     
     /**
@@ -95,7 +139,21 @@ public extension Request {
      */
     public func rac_responsePropertyList(queue: dispatch_queue_t? = nil) -> SignalProducer<AnyObject, NSError> {
         
-        return rac_response(queue, responseSerializer: Request.propertyListResponseSerializer())
+        return SignalProducer<AnyObject, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.propertyListResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+        }
     }
 }
 

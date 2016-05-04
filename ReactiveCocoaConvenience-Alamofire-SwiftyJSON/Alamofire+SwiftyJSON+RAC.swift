@@ -55,7 +55,21 @@ public extension Request {
      */
     public func rac_responseSwiftyJSON(queue: dispatch_queue_t? = nil) -> SignalProducer<JSON, NSError> {
         
-        return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
+        return SignalProducer<JSON, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.swiftyJSONResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+        }
     }
     
     /**
@@ -68,7 +82,21 @@ public extension Request {
      */
     public func rac_responseSwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<(JSON, T), NSError> {
         
-        return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
+        return SignalProducer<JSON, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.swiftyJSONResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+            }
             .flatMap(.Latest) { (json) -> SignalProducer<(JSON, T), NSError> in
                 
                 do {
@@ -90,7 +118,21 @@ public extension Request {
      */
     public func rac_responseArraySwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<(JSON, [T]), NSError> {
         
-        return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
+        return SignalProducer<JSON, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.swiftyJSONResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+            }
             .flatMap(.Latest) { (json) -> SignalProducer<(JSON, [T]), NSError> in
                 
                 if let jsonArray = json.array {
@@ -115,7 +157,22 @@ public extension Request {
      */
     public func rac_responseDictionarySwiftyJSONCreated<T:JSONCreated>(queue: dispatch_queue_t? = nil) -> SignalProducer<(JSON, [String:T]), NSError> {
         
-        return rac_response(queue, responseSerializer: Request.swiftyJSONResponseSerializer())
+        return SignalProducer<JSON, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: Request.swiftyJSONResponseSerializer()) { (response) -> Void in
+                
+                switch response.result {
+                    
+                case .Success(let serialized):
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
+                case .Failure(let error):
+                    observer.sendFailed(error as NSError)
+                }
+                
+            }
+            }
+
             .flatMap(.Latest) { (json) -> SignalProducer<(JSON, [String:T]), NSError> in
                 
                 if let jsonDictionary = json.dictionary {
