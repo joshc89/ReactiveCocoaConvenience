@@ -2,9 +2,46 @@
 
 Core Convenience functionality on top of [ReactiveCocoa].
 
-This is a sub-framework of a [parent project](https://github.com/joshc89/ReactiveCocoaConvenience) of the same name.  There are more sub-frameworks adding extra [ReactiveCocoa] functionality to other 3rd Party libraries.
+This is a sub-framework of a [parent project](https://github.com/joshc89/ReactiveCocoaConvenience) of the same name.  There are more sub-frameworks adding extra [ReactiveCocoa] functionality to other 3rd Party libraries. This project is [fully documented](). 
 
-This project is [fully documented](). 
+## Examples
+
+Examples from the [ReactiveCocoa] ReadMe can be simplified using ReactiveCocoaConvenience:
+
+	let searchStrings = textField.rac_textSignal()
+      .toSignalProducer()
+      .map { text in text as! String }
+
+becomes
+
+	let searchStrings = tetxField.rac_textSignalProducer()
+
+In order to bind this to a MutableProperty:
+
+	searchProperty <~ textField.rac_textSignal()
+      .toSignalProducer()
+      .map { text in text as! String }
+      .flatMapError { _ in return SignalProducer<String?, NoError>.empty }
+
+becomes
+
+	searchProperty <~ textField.rac_textSignalProducer()
+	
+Binding the text entered on pressing the return key to a label:
+
+	textField.rac_signalForControlEvents(.EditingDidEndOnExit)
+            .toSignalProducer()
+            .map({ $0 as! UITextField })
+			.startWithNext({ textField in 
+			 	self.myLabel.text = textField.text
+			})
+
+becomes
+
+	myLabel.rac_text = textField.rac_signalProducerForControlEvents(.EditingDidEndOnExit)
+	  .map { $0.text }
+
+Simpler code is easier to understand and maintain. That is the goal of this sub-framework. More extensions will be added over time.
 
 ## ReactiveCocoa 'MutableProperty's
 
