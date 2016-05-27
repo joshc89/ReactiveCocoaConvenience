@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NSError Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/NSError" class="dashAnchor"></a>
+    <a title="NSError Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ReactiveCocoaConvenience_Alamofire_SwiftyJSON Docs</a> (84% documented)</p>
+        <p class="header-right"><a href="https://github.com/joshc89/ReactiveCocoaConvenience"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ReactiveCocoaConvenience_Alamofire_SwiftyJSON Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        NSError Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON23JSONResponseErrorDomainSS">JSONResponseErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON30JSONResponseMissingElementCodeSi">JSONResponseMissingElementCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON30JSONResponseUnexpectedTypeCodeSi">JSONResponseUnexpectedTypeCode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSError.html">NSError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/JSONCreated.html">JSONCreated</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>NSError</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONCSo7NSError26unexpectedTypeErrorForJSONFTV10SwiftyJSON4JSON12expectedTypeOS1_4Type20localizedDescriptionSS22localizedFailureReasonSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/unexpectedTypeErrorForJSON(_:expectedType:localizedDescription:localizedFailureReason:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONCSo7NSError26unexpectedTypeErrorForJSONFTV10SwiftyJSON4JSON12expectedTypeOS1_4Type20localizedDescriptionSS22localizedFailureReasonSS_S0_">unexpectedTypeErrorForJSON(_:expectedType:localizedDescription:localizedFailureReason:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience creator for a <code><a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON23JSONResponseErrorDomainSS">JSONResponseErrorDomain</a></code> error with code <code><a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON30JSONResponseUnexpectedTypeCodeSi">JSONResponseUnexpectedTypeCode</a></code>. Description and failure reason can be set through the optional parameters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">unexpectedTypeErrorForJSON</span><span class="p">(</span><span class="nv">json</span><span class="p">:</span><span class="kt">JSON</span><span class="p">,</span>
+                                                  <span class="nv">expectedType</span><span class="p">:</span><span class="k">Type</span><span class="p">,</span>
+                                                  <span class="nv">localizedDescription</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Unable to create object."</span><span class="p">,</span>
+                                                  <span class="nv">localizedFailureReason</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Unexpected JSON format. Expected '%@', got '%@'"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSError</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>json</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>JSON</code> object of the unexpected type.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>expectedType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>JSON.Type</code> that was expected.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>localizedDescription</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>localizedDescription</code> for the error being created. Default value is <q>Unable to create object.</q>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>localizedFailureReason</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>localizedFailureReason</code> for the error being created. Default value is <q>Unexpected JSON format. Expected &rsquo;%@&rsquo;, got &rsquo;%@&rsquo;</q>, where the two arguments are the <code>expectedType</code> and actual type of <code>json</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONCSo7NSError26missingElementErrorForJSONFTV10SwiftyJSON4JSON20localizedDescriptionSS22localizedFailureReasonSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/missingElementErrorForJSON(_:localizedDescription:localizedFailureReason:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONCSo7NSError26missingElementErrorForJSONFTV10SwiftyJSON4JSON20localizedDescriptionSS22localizedFailureReasonSS_S0_">missingElementErrorForJSON(_:localizedDescription:localizedFailureReason:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience creator for a <code><a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON23JSONResponseErrorDomainSS">JSONResponseErrorDomain</a></code> error with code <code><a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON30JSONResponseMissingElementCodeSi">JSONResponseMissingElementCode</a></code>. Description and failure reason can be set through the optional parameters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">missingElementErrorForJSON</span><span class="p">(</span><span class="nv">json</span><span class="p">:</span><span class="kt">JSON</span><span class="p">,</span>
+                                                  <span class="nv">localizedDescription</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Unable to create object."</span><span class="p">,</span>
+                                                  <span class="nv">localizedFailureReason</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Missing required elements."</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSError</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>json</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>JSON</code> object of the unexpected type.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>localizedDescription</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>localizedDescription</code> for the error being created. Default value is <q>Unable to create object.</q>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>localizedFailureReason</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>localizedFailureReason</code> for the error being created. Default value is <q>Missing required elements.</q>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://uk.linkedin.com/in/josh-campion-180b2a74" target="_blank" rel="external">Josh Campion</a>. All rights reserved. (Last updated: 2016-05-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

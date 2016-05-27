@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UITextField Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/UITextField" class="dashAnchor"></a>
+    <a title="UITextField Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ReactiveCocoaConvenience Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/joshc89/ReactiveCocoaConvenience"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ReactiveCocoaConvenience Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        UITextField Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotificationCenter.html">NSNotificationCenter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIControl.html">UIControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextView.html">UITextView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F24ReactiveCocoaConvenience22lazyAssociatedPropertyuRxs9AnyObjectrFTPS0__3keyGSPT__7factoryFT_x_x">lazyAssociatedProperty(_:key:factory:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F24ReactiveCocoaConvenience19lazyMutablePropertyurFTPs9AnyObject_3keyGSPT__6setterFxT_6getterFT_x_GC13ReactiveCocoa15MutablePropertyx_">lazyMutableProperty(_:key:setter:getter:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ReactiveTextProperties.html">ReactiveTextProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TextProperties.html">TextProperties</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AssociationKey.html">AssociationKey</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>UITextField</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">UITextField</span> <span class="p">:</span> <span class="kt">UIControl</span><span class="p">,</span> <span class="kt">UITextInput</span><span class="p">,</span> <span class="kt">NSCoding</span></code></pre>
+
+                </div>
+              </div>
+            <p>Adds convenience methods for typed <code>SignalProducers</code> from RACSignal methods with <code>NoError</code> types for binding straight to <code>MutableProperty</code>s.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE24ReactiveCocoaConvenienceCSo11UITextField22rac_textSignalProducerFT_GV13ReactiveCocoa14SignalProducerSSO6Result7NoError_"></a>
+                    <a name="//apple_ref/swift/Method/rac_textSignalProducer()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE24ReactiveCocoaConvenienceCSo11UITextField22rac_textSignalProducerFT_GV13ReactiveCocoa14SignalProducerSSO6Result7NoError_">rac_textSignalProducer()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">rac_textSignalProducer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">SignalProducer</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">NoError</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>SignalProducer</code> mapped from <code>rac_textSignal()</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://uk.linkedin.com/in/josh-campion-180b2a74" target="_blank" rel="external">Josh Campion</a>. All rights reserved. (Last updated: 2016-05-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

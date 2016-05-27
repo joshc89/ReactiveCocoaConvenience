@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Request Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/Request" class="dashAnchor"></a>
+    <a title="Request Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ReactiveCocoaConvenience_Alamofire_SwiftyJSON Docs</a> (84% documented)</p>
+        <p class="header-right"><a href="https://github.com/joshc89/ReactiveCocoaConvenience"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ReactiveCocoaConvenience_Alamofire_SwiftyJSON Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Request Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON23JSONResponseErrorDomainSS">JSONResponseErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON30JSONResponseMissingElementCodeSi">JSONResponseMissingElementCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v45ReactiveCocoaConvenience_Alamofire_SwiftyJSON30JSONResponseUnexpectedTypeCodeSi">JSONResponseUnexpectedTypeCode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSError.html">NSError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Request.html">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/JSONCreated.html">JSONCreated</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Request</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">Request</span></code></pre>
+
+                </div>
+              </div>
+            <p>Extension to <code>Alamofire.Request</code> for adding a response serialized as a <code>SwiftyJSON</code> object.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request28swiftyJSONResponseSerializerFT7optionsVSC20NSJSONReadingOptions_GVS0_18ResponseSerializerV10SwiftyJSON4JSONCSo7NSError_"></a>
+                    <a name="//apple_ref/swift/Method/swiftyJSONResponseSerializer(options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request28swiftyJSONResponseSerializerFT7optionsVSC20NSJSONReadingOptions_GVS0_18ResponseSerializerV10SwiftyJSON4JSONCSo7NSError_">swiftyJSONResponseSerializer(options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a response serializer that returns an object constructed from the response data using <code>JSON(data:options:error:)</code> with the specified reading options. Errors are passed as a <code>.Failed</code> event.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">swiftyJSONResponseSerializer</span><span class="p">(</span>
+        <span class="n">options</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSJSONReadingOptions</span> <span class="o">=</span> <span class="o">.</span><span class="kt">AllowFragments</span><span class="p">)</span>
+        <span class="o">-&gt;</span> <span class="kt">ResponseSerializer</span><span class="o">&lt;</span><span class="kt">JSON</span><span class="p">,</span> <span class="kt">NSError</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The json reading options. <code>.AllowFragments</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>JSON</code> object response serializer.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request18responseSwiftyJSONFT7optionsVSC20NSJSONReadingOptions17completionHandlerFGVS0_8ResponseV10SwiftyJSON4JSONCSo7NSError_T__DS1_"></a>
+                    <a name="//apple_ref/swift/Method/responseSwiftyJSON(options:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request18responseSwiftyJSONFT7optionsVSC20NSJSONReadingOptions17completionHandlerFGVS0_8ResponseV10SwiftyJSON4JSONCSo7NSError_T__DS1_">responseSwiftyJSON(options:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a handler to be called once the request has finished.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">responseSwiftyJSON</span><span class="p">(</span>
+        <span class="n">options</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSJSONReadingOptions</span> <span class="o">=</span> <span class="o">.</span><span class="kt">AllowFragments</span><span class="p">,</span>
+        <span class="nv">completionHandler</span><span class="p">:</span> <span class="kt">Response</span><span class="o">&lt;</span><span class="kt">JSON</span><span class="p">,</span> <span class="kt">NSError</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span>
+        <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The json reading options. <code>.AllowFragments</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to be executed once the request has finished. The closure takes a single argument, the Alamofire <code>Response&lt;JSON, NSError&gt;</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The request.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request22rac_responseSwiftyJSONFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerV10SwiftyJSON4JSONCSo7NSError_"></a>
+                    <a name="//apple_ref/swift/Method/rac_responseSwiftyJSON(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request22rac_responseSwiftyJSONFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerV10SwiftyJSON4JSONCSo7NSError_">rac_responseSwiftyJSON(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience ReactiveCocoa response using a <code>swiftyJSONResponseSerializer()</code>.</p>
+
+<div class="aside aside-seealso">
+    <p class="aside-title">Seealso</p>
+    <code>rac_response(_:responseSerializer:)</code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">rac_responseSwiftyJSON</span><span class="p">(</span><span class="nv">queue</span><span class="p">:</span> <span class="n">dispatch_queue_t</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SignalProducer</span><span class="o">&lt;</span><span class="kt">JSON</span><span class="p">,</span> <span class="kt">NSError</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request29rac_responseSwiftyJSONCreateduRxS_11JSONCreatedrFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerTV10SwiftyJSON4JSONx_CSo7NSError_"></a>
+                    <a name="//apple_ref/swift/Method/rac_responseSwiftyJSONCreated(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request29rac_responseSwiftyJSONCreateduRxS_11JSONCreatedrFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerTV10SwiftyJSON4JSONx_CSo7NSError_">rac_responseSwiftyJSONCreated(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience ReactiveCocoa response using a <code>swiftyJSONResponseSerializer()</code> that transforms the <code>JSON</code> to a <code><a href="../Protocols/JSONCreated.html">JSONCreated</a></code> object.</p>
+
+<div class="aside aside-seealso">
+    <p class="aside-title">Seealso</p>
+    <p><code><a href="../Extensions/Request.html#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request22rac_responseSwiftyJSONFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerV10SwiftyJSON4JSONCSo7NSError_">rac_responseSwiftyJSON(_:)</a></code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">rac_responseSwiftyJSONCreated</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span><span class="kt">JSONCreated</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">queue</span><span class="p">:</span> <span class="n">dispatch_queue_t</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SignalProducer</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">JSON</span><span class="p">,</span> <span class="kt">T</span><span class="p">),</span> <span class="kt">NSError</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>SignalProducer</code> with either the <code><a href="../Protocols/JSONCreated.html">JSONCreated</a></code> object as its value or the thrown error from <code>init(json:)</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request34rac_responseArraySwiftyJSONCreateduRxS_11JSONCreatedrFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerTV10SwiftyJSON4JSONGSax__CSo7NSError_"></a>
+                    <a name="//apple_ref/swift/Method/rac_responseArraySwiftyJSONCreated(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request34rac_responseArraySwiftyJSONCreateduRxS_11JSONCreatedrFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerTV10SwiftyJSON4JSONGSax__CSo7NSError_">rac_responseArraySwiftyJSONCreated(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience ReactiveCocoa response using a <code>swiftyJSONResponseSerializer()</code> that transforms the <code>JSON</code> to an array of <code><a href="../Protocols/JSONCreated.html">JSONCreated</a></code> objects.</p>
+
+<div class="aside aside-seealso">
+    <p class="aside-title">Seealso</p>
+    <p><code><a href="../Extensions/Request.html#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request22rac_responseSwiftyJSONFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerV10SwiftyJSON4JSONCSo7NSError_">rac_responseSwiftyJSON(_:)</a></code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">rac_responseArraySwiftyJSONCreated</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span><span class="kt">JSONCreated</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">queue</span><span class="p">:</span> <span class="n">dispatch_queue_t</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SignalProducer</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">JSON</span><span class="p">,</span> <span class="p">[</span><span class="kt">T</span><span class="p">]),</span> <span class="kt">NSError</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>SignalProducer</code> with an array of all the <code><a href="../Protocols/JSONCreated.html">JSONCreated</a></code> objects that didn&rsquo;t throw errors. The original JSON is returned alongside the transformed objects for transparency. This allows the caller to check the JSON count against the transformed count. If the <code>JSON</code> returned from the <code>swiftyJSONResponseSerializer()</code> is not an <code><a href="../Extensions/Array.html">Array</a></code> the <code>SignalProducer</code> has an error created from <code>unexpectedTypeErrorForJSON(_:expectedType:)</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request39rac_responseDictionarySwiftyJSONCreateduRxS_11JSONCreatedrFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerTV10SwiftyJSON4JSONGVs10DictionarySSx__CSo7NSError_"></a>
+                    <a name="//apple_ref/swift/Method/rac_responseDictionarySwiftyJSONCreated(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request39rac_responseDictionarySwiftyJSONCreateduRxS_11JSONCreatedrFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerTV10SwiftyJSON4JSONGVs10DictionarySSx__CSo7NSError_">rac_responseDictionarySwiftyJSONCreated(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience ReactiveCocoa response using a <code>swiftyJSONResponseSerializer()</code> that transforms the <code>JSON</code> to a dictionary of <code><a href="../Protocols/JSONCreated.html">JSONCreated</a></code> objects.</p>
+
+<div class="aside aside-seealso">
+    <p class="aside-title">Seealso</p>
+    <p><code><a href="../Extensions/Request.html#/s:FE45ReactiveCocoaConvenience_Alamofire_SwiftyJSONC9Alamofire7Request22rac_responseSwiftyJSONFTGSqPSo17OS_dispatch_queue___GV13ReactiveCocoa14SignalProducerV10SwiftyJSON4JSONCSo7NSError_">rac_responseSwiftyJSON(_:)</a></code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">rac_responseDictionarySwiftyJSONCreated</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span><span class="kt">JSONCreated</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">queue</span><span class="p">:</span> <span class="n">dispatch_queue_t</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">SignalProducer</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">JSON</span><span class="p">,</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">T</span><span class="p">]),</span> <span class="kt">NSError</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>SignalProducer</code> with a dictionary of all the <code><a href="../Protocols/JSONCreated.html">JSONCreated</a></code> objects that didn&rsquo;t throw errors. The original JSON is returned alongside the transformed objects for transparency. This allows the caller to check the JSON count against the transformed count. If the <code>JSON</code> returned from the <code>swiftyJSONResponseSerializer()</code> is not a <code>Dictionary</code> the <code>SignalProducer</code> has an error created from <code>unexpectedTypeErrorForJSON(_:expectedType:)</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://uk.linkedin.com/in/josh-campion-180b2a74" target="_blank" rel="external">Josh Campion</a>. All rights reserved. (Last updated: 2016-05-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

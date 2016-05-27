@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ReactiveCocoaConvenience  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="ReactiveCocoaConvenience  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">ReactiveCocoaConvenience Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/joshc89/ReactiveCocoaConvenience"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">ReactiveCocoaConvenience Reference</a>
+        <img id="carat" src="img/carat.png" />
+        ReactiveCocoaConvenience  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/NSNotificationCenter.html">NSNotificationCenter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIControl.html">UIControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITextView.html">UITextView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F24ReactiveCocoaConvenience22lazyAssociatedPropertyuRxs9AnyObjectrFTPS0__3keyGSPT__7factoryFT_x_x">lazyAssociatedProperty(_:key:factory:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F24ReactiveCocoaConvenience19lazyMutablePropertyurFTPs9AnyObject_3keyGSPT__6setterFxT_6getterFT_x_GC13ReactiveCocoa15MutablePropertyx_">lazyMutableProperty(_:key:setter:getter:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ReactiveTextProperties.html">ReactiveTextProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/TextProperties.html">TextProperties</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/AssociationKey.html">AssociationKey</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#reactive-cocoa-convenience' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='reactive-cocoa-convenience'>Reactive Cocoa Convenience</h1>
+
+<p>Core Convenience functionality on top of <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a>.</p>
+
+<p>This is a sub-framework of a <a href="https://github.com/joshc89/ReactiveCocoaConvenience">parent project</a> of the same name.  There are more sub-frameworks adding extra <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> functionality to other 3rd Party libraries.</p>
+
+<p>This project is <a href="">fully documented</a>. </p>
+<a href='#reactivecocoa-39-mutableproperty-39-s' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='reactivecocoa-39-mutableproperty-39-s'>ReactiveCocoa &lsquo;MutableProperty&rsquo;s</h2>
+
+<p>Inspired by <a href="http://blog.scottlogic.com/2015/05/15/mvvm-reactive-cocoa-3.html">Colin Eberhart&rsquo;s blog post <q>MVVM With ReactiveCocoa</q></a> I wanted to simplify the code to bind variables to and from UIKit components.</p>
+
+<p>Extensions have been to added to UIKit classes to give <code>MutableProperty</code> equivalents to UIKit properties that will often change as a result of a <code>Signal</code> or <code>SignalProducer</code>:</p>
+<pre class="highlight plaintext"><code>UIView:
+  rac_hidden: MutableProperty&lt;Bool&gt;
+  rac_alpha: MutableProperty&lt;CGFloat&gt;
+
+UIControl:
+  rac_enabled: MutableProperty&lt;Bool&gt;
+
+UILabel, UITextField, and UITextView:
+  rac_text: MutableProperty&lt;String?&gt;
+  rac_attributedText: MutableProperty&lt;NSAttributedString?&gt;
+</code></pre>
+<a href='#typed-signals' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='typed-signals'>Typed Signals</h2>
+
+<p>ReactiveCocoa provides many signals from UIKit components, however these tend to be <code>RACSignal</code> classes, not the newer Swift generic <code>Signal</code> or <code>SignalProducer</code> classes. To use these in Swift projects requires boilerplate mapping and force unwrapping. These mappings have wrapped up in convenience functions:</p>
+<pre class="highlight plaintext"><code>UIControl:
+  rac_signProducerForEvents(_:) -&gt; SignalProducer&lt;UIControl, NoError&gt;
+
+UITextField and UITextView:
+  rac_textSignalProducer() -&gt; SignalProducer&lt;String?, NoError&gt;
+</code></pre>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://uk.linkedin.com/in/josh-campion-180b2a74" target="_blank" rel="external">Josh Campion</a>. All rights reserved. (Last updated: 2016-05-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

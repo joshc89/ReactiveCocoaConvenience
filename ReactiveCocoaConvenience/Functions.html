@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Functions  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Functions  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">ReactiveCocoaConvenience Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/joshc89/ReactiveCocoaConvenience"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">ReactiveCocoaConvenience Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Functions  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/NSNotificationCenter.html">NSNotificationCenter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIControl.html">UIControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITextView.html">UITextView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F24ReactiveCocoaConvenience22lazyAssociatedPropertyuRxs9AnyObjectrFTPS0__3keyGSPT__7factoryFT_x_x">lazyAssociatedProperty(_:key:factory:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F24ReactiveCocoaConvenience19lazyMutablePropertyurFTPs9AnyObject_3keyGSPT__6setterFxT_6getterFT_x_GC13ReactiveCocoa15MutablePropertyx_">lazyMutableProperty(_:key:setter:getter:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ReactiveTextProperties.html">ReactiveTextProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/TextProperties.html">TextProperties</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/AssociationKey.html">AssociationKey</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Functions</h1>
+            <p>The following functions are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F24ReactiveCocoaConvenience22lazyAssociatedPropertyuRxs9AnyObjectrFTPS0__3keyGSPT__7factoryFT_x_x"></a>
+                    <a name="//apple_ref/swift/Function/lazyAssociatedProperty(_:key:factory:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F24ReactiveCocoaConvenience22lazyAssociatedPropertyuRxs9AnyObjectrFTPS0__3keyGSPT__7factoryFT_x_x">lazyAssociatedProperty(_:key:factory:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A utility function for creating lazily-constructed associated properties</p>
+
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Original Source: <a href="https://github.com/ColinEberhardt/ReactiveTwitterSearch/blob/master/ReactiveTwitterSearch/Util/UIKitExtensions.swift">Colin Eberhart&rsquo;s <q>Reactive Twitter Search</q></a></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">lazyAssociatedProperty</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafePointer</span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">factory</span><span class="p">:</span> <span class="p">()</span><span class="o">-&gt;</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object the property is to be associated with.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The address of the key this value is associated with.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>factory</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Closure defining the initial value.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F24ReactiveCocoaConvenience19lazyMutablePropertyurFTPs9AnyObject_3keyGSPT__6setterFxT_6getterFT_x_GC13ReactiveCocoa15MutablePropertyx_"></a>
+                    <a name="//apple_ref/swift/Function/lazyMutableProperty(_:key:setter:getter:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F24ReactiveCocoaConvenience19lazyMutablePropertyurFTPs9AnyObject_3keyGSPT__6setterFxT_6getterFT_x_GC13ReactiveCocoa15MutablePropertyx_">lazyMutableProperty(_:key:setter:getter:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lazily-constructed associated property for a ReactiveCocoa <code>MutableProperty</code> of a given type.</p>
+
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Original Source: <a href="https://github.com/ColinEberhardt/ReactiveTwitterSearch/blob/master/ReactiveTwitterSearch/Util/UIKitExtensions.swift">Colin Eberhart&rsquo;s <q>Reactive Twitter Search</q></a></p>
+
+</div>
+
+<div class="aside aside-seealso">
+    <p class="aside-title">Seealso</p>
+    <p><code><a href="Functions.html#/s:F24ReactiveCocoaConvenience22lazyAssociatedPropertyuRxs9AnyObjectrFTPS0__3keyGSPT__7factoryFT_x_x">lazyAssociatedProperty(_:key:factory:)</a></code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">lazyMutableProperty</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafePointer</span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">setter</span><span class="p">:</span> <span class="kt">T</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">getter</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">MutableProperty</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object the property is to be associated with.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The address of the key this value is associated with.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>setter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Closure defining how the new value from a <code>.Next</code> event of this <code>MutableProperty</code> should be set on the original object.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>getter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Close defining how the initial value of this <code>MutableProperty</code> should be set.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://uk.linkedin.com/in/josh-campion-180b2a74" target="_blank" rel="external">Josh Campion</a>. All rights reserved. (Last updated: 2016-05-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
