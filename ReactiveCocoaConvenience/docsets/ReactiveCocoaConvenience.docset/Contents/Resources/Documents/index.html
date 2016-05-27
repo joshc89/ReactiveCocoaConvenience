@@ -87,9 +87,45 @@
 
 <p>Core Convenience functionality on top of <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a>.</p>
 
-<p>This is a sub-framework of a <a href="https://github.com/joshc89/ReactiveCocoaConvenience">parent project</a> of the same name.  There are more sub-frameworks adding extra <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> functionality to other 3rd Party libraries.</p>
+<p>This is a sub-framework of a <a href="https://github.com/joshc89/ReactiveCocoaConvenience">parent project</a> of the same name.  There are more sub-frameworks adding extra <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> functionality to other 3rd Party libraries. This project is <a href="">fully documented</a>. </p>
+<a href='#examples' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='examples'>Examples</h2>
 
-<p>This project is <a href="">fully documented</a>. </p>
+<p>Examples from the <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> ReadMe can be simplified using ReactiveCocoaConvenience:</p>
+<pre class="highlight plaintext"><code>let searchStrings = textField.rac_textSignal()
+  .toSignalProducer()
+  .map { text in text as! String }
+</code></pre>
+
+<p>becomes</p>
+<pre class="highlight plaintext"><code>let searchStrings = tetxField.rac_textSignalProducer()
+</code></pre>
+
+<p>In order to bind this to a MutableProperty:</p>
+<pre class="highlight plaintext"><code>searchProperty &lt;~ textField.rac_textSignal()
+  .toSignalProducer()
+  .map { text in text as! String }
+  .flatMapError { _ in return SignalProducer&lt;String?, NoError&gt;.empty }
+</code></pre>
+
+<p>becomes</p>
+<pre class="highlight plaintext"><code>searchProperty &lt;~ textField.rac_textSignalProducer()
+</code></pre>
+
+<p>Binding the text entered on pressing the return key to a label:</p>
+<pre class="highlight plaintext"><code>textField.rac_signalForControlEvents(.EditingDidEndOnExit)
+        .toSignalProducer()
+        .map({ $0 as! UITextField })
+        .startWithNext({ textField in 
+            self.myLabel.text = textField.text
+        })
+</code></pre>
+
+<p>becomes</p>
+<pre class="highlight plaintext"><code>myLabel.rac_text = textField.rac_signalProducerForControlEvents(.EditingDidEndOnExit)
+  .map { $0.text }
+</code></pre>
+
+<p>Simpler code is easier to understand and maintain. That is the goal of this sub-framework. More extensions will be added over time.</p>
 <a href='#reactivecocoa-39-mutableproperty-39-s' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='reactivecocoa-39-mutableproperty-39-s'>ReactiveCocoa &lsquo;MutableProperty&rsquo;s</h2>
 
 <p>Inspired by <a href="http://blog.scottlogic.com/2015/05/15/mvvm-reactive-cocoa-3.html">Colin Eberhart&rsquo;s blog post <q>MVVM With ReactiveCocoa</q></a> I wanted to simplify the code to bind variables to and from UIKit components.</p>
