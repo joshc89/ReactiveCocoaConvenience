@@ -17,34 +17,55 @@ import ReactiveCocoaConvenience_Alamofire
 
 public let JSONResponseErrorDomain = "JSONResponseError"
 public let JSONResponseUnexpectedTypeCode = 0
-public let JSONResponseMissingElementCode = 0
+public let JSONResponseMissingElementCode = 1
 
+/// Convenience creators for common errors when initialising a `JSONCreated` object.
 public extension NSError {
     
+    /**
+     
+     Convenience creator for a `JSONResponseErrorDomain` error with code `JSONResponseUnexpectedTypeCode`. Description and failure reason can be set through the optional parameters.
+     
+     - parameter json: The `JSON` object of the unexpected type.
+     - parameter expectedType: The `JSON.Type` that was expected.
+     - parameter localizedDescription: The `localizedDescription` for the error being created. Default value is "Unable to create object.".
+     - parameter localizedFailureReason: The `localizedFailureReason` for the error being created. Default value is "Unexpected JSON format. Expected '%@', got '%@'", where the two arguments are the `expectedType` and actual type of `json`.
+     
+     */
     public static func unexpectedTypeErrorForJSON(json:JSON,
-        expectedType:Type,
-        localizedDescription: String = "Unable to create object.",
-        localizedFailureReason: String = "Unexpected JSON format. Expected '%@', got '%@'") -> NSError {
+                                                  expectedType:Type,
+                                                  localizedDescription: String = "Unable to create object.",
+                                                  localizedFailureReason: String = "Unexpected JSON format. Expected '%@', got '%@'") -> NSError {
         
-            let failureReason = String(format: localizedFailureReason, arguments: ["\(expectedType)", "\(json.type)"])
-            
-            return NSError(domain: JSONResponseErrorDomain,
-                code: JSONResponseUnexpectedTypeCode,
-                userInfo: [NSLocalizedDescriptionKey: localizedDescription,
-                    NSLocalizedFailureReasonErrorKey: failureReason])
+        let failureReason = String(format: localizedFailureReason, arguments: ["\(expectedType)", "\(json.type)"])
+        
+        return NSError(domain: JSONResponseErrorDomain,
+                       code: JSONResponseUnexpectedTypeCode,
+                       userInfo: [NSLocalizedDescriptionKey: localizedDescription,
+                        NSLocalizedFailureReasonErrorKey: failureReason])
     }
     
+    /**
+     
+     Convenience creator for a `JSONResponseErrorDomain` error with code `JSONResponseMissingElementCode`. Description and failure reason can be set through the optional parameters.
+     
+     - parameter json: The `JSON` object of the unexpected type.
+     - parameter localizedDescription: The `localizedDescription` for the error being created. Default value is "Unable to create object.".
+     - parameter localizedFailureReason: The `localizedFailureReason` for the error being created. Default value is "Missing required elements.".
+     
+     */
     public static func missingElementErrorForJSON(json:JSON,
-        localizedDescription: String = "Unable to create object.",
-        localizedFailureReason: String = "Missing required elements.") -> NSError {
-            
-            return NSError(domain: JSONResponseErrorDomain,
-                code: JSONResponseUnexpectedTypeCode,
-                userInfo: [NSLocalizedDescriptionKey: localizedDescription,
-                    NSLocalizedFailureReasonErrorKey: localizedFailureReason])
+                                                  localizedDescription: String = "Unable to create object.",
+                                                  localizedFailureReason: String = "Missing required elements.") -> NSError {
+        
+        return NSError(domain: JSONResponseErrorDomain,
+                       code: JSONResponseUnexpectedTypeCode,
+                       userInfo: [NSLocalizedDescriptionKey: localizedDescription,
+                        NSLocalizedFailureReasonErrorKey: localizedFailureReason])
     }
 }
 
+/// Extension of `Alamofire.Request` adding ReactiveCocoa SignalProducer responses with SwiftyJSON and `JSONCreated` serialized objects.
 public extension Request {
     
     /**
@@ -151,7 +172,7 @@ public extension Request {
      
      Convenience ReactiveCocoa response using a `swiftyJSONResponseSerializer()` that transforms the `JSON` to a dictionary of `JSONCreated` objects.
      
-     - returns: A `SignalProducer` with an dictionary of all the `JSONCreated` objects that didn't throw errors. The original JSON is returned alongside the transformed objects for transparency. This allows the caller to check the JSON count against the transformed count. If the `JSON` returned from the `swiftyJSONResponseSerializer()` is not a `Dictionary` the `SignalProducer` has an error created from `unexpectedTypeErrorForJSON(_:expectedType:)`.
+     - returns: A `SignalProducer` with a dictionary of all the `JSONCreated` objects that didn't throw errors. The original JSON is returned alongside the transformed objects for transparency. This allows the caller to check the JSON count against the transformed count. If the `JSON` returned from the `swiftyJSONResponseSerializer()` is not a `Dictionary` the `SignalProducer` has an error created from `unexpectedTypeErrorForJSON(_:expectedType:)`.
      
      - seealso: `rac_responseSwiftyJSON(_:)`
      */
@@ -162,17 +183,15 @@ public extension Request {
             self.response(queue: queue, responseSerializer: Request.swiftyJSONResponseSerializer()) { (response) -> Void in
                 
                 switch response.result {
-                    
                 case .Success(let serialized):
                     observer.sendNext(serialized)
                     observer.sendCompleted()
                 case .Failure(let error):
                     observer.sendFailed(error as NSError)
                 }
-                
+                }
             }
-            }
-
+            
             .flatMap(.Latest) { (json) -> SignalProducer<(JSON, [String:T]), NSError> in
                 
                 if let jsonDictionary = json.dictionary {

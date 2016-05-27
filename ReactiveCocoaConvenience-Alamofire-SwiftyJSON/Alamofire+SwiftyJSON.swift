@@ -11,8 +11,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public typealias SwiftyJSONResponseCompletion = (jsonResponse:Response<JSON, NSError>) -> Void
-
+/// Extension to `Alamofire.Request` for adding a response serialized as a `SwiftyJSON` object.
 public extension Request {
     
     /**
@@ -51,7 +50,7 @@ public extension Request {
     /**
      Adds a handler to be called once the request has finished.
      
-     - parameter options:           The json reading options. `.AllowFragments` by default.
+     - parameter options: The json reading options. `.AllowFragments` by default.
      - parameter completionHandler: A closure to be executed once the request has finished. The closure takes a single argument, the Alamofire `Response<JSON, NSError>`.
      
      - returns: The request.
@@ -68,20 +67,38 @@ public extension Request {
     }
 }
 
+/// Portocol defining a standard method of creating an object from a `SwiftyJSON` object.
 public protocol JSONCreated {
     
+    /// Initialise this object using a `SwiftyJSON` object. If the `JSON` object is incorrect, this should throw an error.
     init(json:JSON) throws
 }
 
+/// Adds convenience method for `String`.
 public extension String {
-    /// - returns: self if self is not empty, nil otherwise.
+    
+    /**
+     
+     Convenience method for setting optional values from empty strings in `JSON` objects.
+     
+     - returns: self if self is not empty, nil otherwise.
+     
+    */
     public var nonEmpty:String? {
         return self.isEmpty ? nil : self
     }
 }
 
+/// Adds convenience method for `Array`.
 public extension Array {
-    /// - returns: self if self is not empty, nil otherwise.
+    
+    /**
+     
+     Convenience method for setting optional values from empty arrays in `JSON` objects.
+     
+     - returns: self if self has count greater than 0, nil otherwise.
+     
+     */
     public var nonEmpty:Array<Element>? {
         return self.count > 0 ? self : nil
     }

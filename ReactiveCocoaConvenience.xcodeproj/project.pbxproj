@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A52049051C9DD1D800FFDDF3 /* UITextView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52049041C9DD1D800FFDDF3 /* UITextView+RAC.swift */; };
+		A541674D1CF85B21002F4BA8 /* NSNotificationCenter+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A541674C1CF85B21002F4BA8 /* NSNotificationCenter+RAC.swift */; };
+		A541674F1CF85F74002F4BA8 /* Text+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A541674E1CF85F74002F4BA8 /* Text+RAC.swift */; };
 		A57E25311C9D830200A5CB03 /* ReactiveCocoaConvenience.h in Headers */ = {isa = PBXBuildFile; fileRef = A57E25301C9D830200A5CB03 /* ReactiveCocoaConvenience.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A57E25381C9D830200A5CB03 /* ReactiveCocoaConvenience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57E252D1C9D830200A5CB03 /* ReactiveCocoaConvenience.framework */; };
 		A57E253D1C9D830200A5CB03 /* ReactiveCocoaConvenienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57E253C1C9D830200A5CB03 /* ReactiveCocoaConvenienceTests.swift */; };
@@ -88,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		A52049041C9DD1D800FFDDF3 /* UITextView+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+RAC.swift"; sourceTree = "<group>"; };
+		A541674C1CF85B21002F4BA8 /* NSNotificationCenter+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+RAC.swift"; sourceTree = "<group>"; };
+		A541674E1CF85F74002F4BA8 /* Text+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text+RAC.swift"; sourceTree = "<group>"; };
 		A57E252D1C9D830200A5CB03 /* ReactiveCocoaConvenience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveCocoaConvenience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57E25301C9D830200A5CB03 /* ReactiveCocoaConvenience.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveCocoaConvenience.h; sourceTree = "<group>"; };
 		A57E25321C9D830200A5CB03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -274,8 +278,9 @@
 			isa = PBXGroup;
 			children = (
 				A57E25801C9D848200A5CB03 /* LazyProperties.swift */,
-				A57E25811C9D848200A5CB03 /* UIControl+RAC.swift */,
 				A57E25821C9D848200A5CB03 /* UIView+RAC.swift */,
+				A57E25811C9D848200A5CB03 /* UIControl+RAC.swift */,
+				A541674E1CF85F74002F4BA8 /* Text+RAC.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			children = (
 				A57E25841C9D848200A5CB03 /* UITextField+RAC.swift */,
 				A52049041C9DD1D800FFDDF3 /* UITextView+RAC.swift */,
+				A541674C1CF85B21002F4BA8 /* NSNotificationCenter+RAC.swift */,
 			);
 			path = Signals;
 			sourceTree = "<group>";
@@ -542,9 +548,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A57E25881C9D848200A5CB03 /* UITextField+RAC.swift in Sources */,
+				A541674D1CF85B21002F4BA8 /* NSNotificationCenter+RAC.swift in Sources */,
 				A57E25861C9D848200A5CB03 /* UIControl+RAC.swift in Sources */,
 				A52049051C9DD1D800FFDDF3 /* UITextView+RAC.swift in Sources */,
 				A57E25871C9D848200A5CB03 /* UIView+RAC.swift in Sources */,
+				A541674F1CF85F74002F4BA8 /* Text+RAC.swift in Sources */,
 				A57E25851C9D848200A5CB03 /* LazyProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

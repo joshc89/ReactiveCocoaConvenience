@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+import ReactiveCocoa
+import Result
+
+/// Adds convenience methods for typed `SignalProducers` from RAC Signal methods with `NoError` types for binding straight to `MutableProperty`s.
+public extension NSNotificationCenter {
+    
+    /// - returns: A `SignalProducer` mapped from `rac_addObserverForName(_:object:)`
+    public func rac_notificationSignalProducer(name: String, object: AnyObject?) -> SignalProducer<NSNotification, NoError> {
+        
+        return self.rac_addObserverForName(name, object: object)
+            .toSignalProducer()
+            .map({ $0 as! NSNotification })
+            .flatMapError { _ in SignalProducer<NSNotification, NoError>.empty }
+    }
+}

@@ -9,52 +9,36 @@
 import Foundation
 
 import Alamofire
-import SwiftyJSON
-
 import ReactiveCocoa
 
+/// Extension to `Alamofire.Request` providing ReactiveCocoa signals for each of the `.response...()` methods.
 public extension Request {
     
     /**
      
-     Adds a handler with the given `ResponseSerializer` to be called once the request has finished. 
-     
-     A `SignalProducer` is returned over a `Request` for use with `ReactiveCococa`. If the response is succesful, the serialized object is sent to the producer as a `.Next` event followed by a `.Completed` event. If the response fails, a `.Failed` event is sent to the producer.
-     
-     The Request is suspended until the producer starts, allowing typical `SignalProducer` behaviour.
+     A `SignalProducer` is returned over a `Request` for use with `ReactiveCococa`. If the response is succesful, the serialized object is sent to the producer as a `.Next(_)` event followed by a `.Completed` event. If the response fails, a `.Failed` event is sent to the producer.
      
      - parameter queue: The queue on which the response completion handler is dispatched.
      - parameter responseSerializer: The response serializer responsible for serializing the request, response, and data.
      
-     - returns: A `SignalProducer` that resumes the `Request` on starting and receives the result of the `responseSerializer`.
+     - returns: A `SignalProducer` that schedules a handler with the given `responseSerializer` on `start()`.
     */
-    /*
     public func rac_response<T: ResponseSerializerType>(queue: dispatch_queue_t? = nil, responseSerializer:T) -> SignalProducer<T.SerializedObject, NSError> {
         
-        suspend()
-        
-        let (prod, obs) = SignalProducer<T.SerializedObject, NSError>.buffer(2)
-        
-        self.response(queue: queue,
-            responseSerializer: responseSerializer) { (response) -> Void in
-                
+        return SignalProducer<T.SerializedObject, NSError>.init { (observer, _) in
+            
+            self.response(queue: queue, responseSerializer: responseSerializer, completionHandler: { (response) in
                 switch response.result {
                     
                 case .Success(let serialized):
-                    obs.sendNext(serialized)
-                    obs.sendCompleted()
+                    observer.sendNext(serialized)
+                    observer.sendCompleted()
                 case .Failure(let error):
-                    let nsError = error as NSError
-                    
-                    obs.sendFailed(NSError(domain: nsError.domain, code: nsError.code, userInfo: nsError.userInfo))
+                    observer.sendFailed(error as NSError)
                 }
-        }
-        
-        return prod.on(started: { [weak self] () -> () in
-            self?.resume()
             })
+        }
     }
-    */
     
     /**
      
