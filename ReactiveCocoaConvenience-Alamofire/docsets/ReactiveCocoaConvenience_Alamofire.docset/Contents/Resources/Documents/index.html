@@ -41,7 +41,83 @@
         <section>
           <section class="section">
             
-            
+            <a href='#reactivecocoaconvenience-alamofire' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='reactivecocoaconvenience-alamofire'>ReactiveCocoaConvenience-Alamofire</h1>
+
+<p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> SignalProducers for Alamofire.</p>
+
+<p>This is a sub-framework of a <a href="https://github.com/joshc89/ReactiveCocoaConvenience">ReactiveCocoaConvenience</a>.  There are more sub-frameworks adding extra <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> functionality including one adding <a href="https://github.com/SwiftyJSON/SwiftyJSON">SwiftyJSON</a> support with <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> and <a href="https://github.com/Alamofire/Alamofire">Alamofire</a>. This project is <a href="http://joshc89.github.io/ReactiveCocoaConvenience/ReactiveCocoaConvenience-Alamofire/index.html">fully documented</a>. </p>
+<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+
+<ul>
+<li>[x] Typed serialized <code>SignalProducer</code>s for <a href="https://github.com/Alamofire/Alamofire">Alamofire</a> Requests</li>
+<li>[x] <a href="http://joshc89.github.io/ReactiveCocoaConvenience/ReactiveCocoaConvenience-Alamofire/index.html">Documentation</a></li>
+</ul>
+<a href='#dependencies' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='dependencies'>Dependencies</h2>
+
+<ul>
+<li><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a></li>
+<li>Result</li>
+<li><a href="https://github.com/Alamofire/Alamofire">Alamofire</a></li>
+</ul>
+<a href='#examples' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='examples'>Examples</h2>
+
+<p>Network requests can be done using NSURLSession methods from <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a>:</p>
+<pre class="highlight plaintext"><code>let searchResults = searchStrings
+    .flatMap(.Latest) { (query: String) -&gt; SignalProducer&lt;(NSData, NSURLResponse), NSError&gt; in
+        let URLRequest = self.searchRequestWithEscapedQuery(query)
+        return NSURLSession.sharedSession().rac_dataWithRequest(URLRequest)
+    }
+    .map { (data, URLResponse) -&gt; String in
+        let string = String(data: data, encoding: NSUTF8StringEncoding)!
+        return self.parseJSONResultsFromString(string)
+    }
+    .observeOn(UIScheduler())
+</code></pre>
+
+<p>This is great functionality however 3rd party libraries can offer simplifications to NSURLSession APIs. <a href="https://github.com/Alamofire/Alamofire">Alamofire</a> <q>Elegant HTTP Networking in Swift</q> is a great library. Network requests are made as follows:</p>
+<pre class="highlight plaintext"><code>Alamofire.request(.GET, "https://httpbin.org/get", parameters: ["foo": "bar"])
+     .validate()
+     .responseJSON { response in
+         switch response.result {
+         case .Success:
+             print("Validation Successful")
+         case .Failure(let error):
+             print(error)
+         }
+     }
+</code></pre>
+
+<p>Completion closure based APIs don&rsquo;t natually fit with ReactiveCocoa and make it hard to chain signals together. Using ReactiveCocoaConvenience-Alamofire, a <code>SignalProducer</code> can be created for this request:</p>
+<pre class="highlight plaintext"><code>let p: SignalProducer&lt;AnyObject, NSError&gt;
+p = Alamofire.request(.GET, "https://httpbin.org/get", parameters: ["foo": "bar"])
+     .validate()
+     .rac_responseJSON()
+</code></pre>
+
+<p><a href="https://github.com/Alamofire/Alamofire">Alamofire</a> provides Built-in Response Methods:</p>
+
+<ul>
+<li><code>response()</code></li>
+<li><code>responseData()</code></li>
+<li><code>responseString(encoding: NSStringEncoding)</code></li>
+<li><code>responseJSON(options: NSJSONReadingOptions)</code></li>
+<li><code>responsePropertyList(options: NSPropertyListReadOptions)</code></li>
+</ul>
+
+<p>Each of these has a ReactiveCocoa equivalent</p>
+
+<ul>
+<li><code>rac_response()</code></li>
+<li><code>rac_responseData()</code></li>
+<li><code>rac_responseString(encoding: NSStringEncoding)</code></li>
+<li><code>rac_responseJSON(options: NSJSONReadingOptions)</code></li>
+<li><code>rac_responsePropertyList(options: NSPropertyListReadOptions)</code></li>
+</ul>
+
+<p>ReactiveCocoaConvenience-Alamofire-SwiftyJSON takes this a stage further by support for SwiftyJSON <code>JSON</code> object serialisation and adding initialisation of any object that can be initialised with a <code>JSON</code> object.</p>
+
+<p>Simpler, neater code is easier to understand and maintain. Reduce boilerplate and spend more time writing standout features for your app. See <a href="https://github.com/joshc89/ReactiveCocoaConvenience">ReactiveCocoaConvenience</a> for more ways you can speed up development using <a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a>.</p>
+
           </section>
         </section>
         <section id="footer">
