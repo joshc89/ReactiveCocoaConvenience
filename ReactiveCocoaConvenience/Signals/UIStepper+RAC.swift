@@ -15,7 +15,7 @@ import Result
 public extension UIStepper {
     
     /// - returns: A `SignalProducer` for the changing value of the stepper
-    public func valueSignalProducer() -> SignalProducer<Double, NoError> {
+    public func rac_signalProducerForValue() -> SignalProducer<Double, NoError> {
         
         return rac_signalForControlEvents(.ValueChanged)
             .toSignalProducer()

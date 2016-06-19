@@ -15,7 +15,7 @@ import Result
 public extension UISlider {
     
     /// - returns: A `SignalProducer` for the changing value of the stepper
-    public func valueSignalProducer() -> SignalProducer<Float, NoError> {
+    public func rac_signalProducerForValue() -> SignalProducer<Float, NoError> {
         
         return rac_signalForControlEvents(.ValueChanged)
             .toSignalProducer()

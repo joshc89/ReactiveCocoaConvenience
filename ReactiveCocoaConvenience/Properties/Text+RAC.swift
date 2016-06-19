@@ -21,10 +21,10 @@ public protocol TextProperties: class {
 }
 
 /// `UITextField` has automatic conformance to `TextProperties`.
-extension UITextField: TextProperties { }
+extension UITextField: TextProperties, ReactiveTextProperties { }
 
 /// `UILabel` has automatic conformance to `TextProperties`.
-extension UILabel: TextProperties { }
+extension UILabel: TextProperties, ReactiveTextProperties { }
 
 /// Adds convenience ReactiveCocoa `MutableProperty`s for commonly bound UIKit equivalents. Default implementations are given for objects conforming to `TextProperties`.
 public protocol ReactiveTextProperties: class {
