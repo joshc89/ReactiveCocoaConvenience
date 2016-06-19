@@ -46,6 +46,8 @@
 		A57E25B01C9DAB7000A5CB03 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A57E25931C9D89B800A5CB03 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A57E25B11C9DAB7000A5CB03 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A57E25941C9D89B800A5CB03 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A57E25B21C9DAB7000A5CB03 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A57E25951C9D89B800A5CB03 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5F3AC071D16DAD900E17E31 /* UIStepper+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3AC061D16DAD900E17E31 /* UIStepper+RAC.swift */; };
+		A5F3AC091D16DC1B00E17E31 /* UISlider+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3AC081D16DC1B00E17E31 /* UISlider+RAC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		A57E25931C9D89B800A5CB03 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		A57E25941C9D89B800A5CB03 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		A57E25951C9D89B800A5CB03 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		A5F3AC061D16DAD900E17E31 /* UIStepper+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStepper+RAC.swift"; sourceTree = "<group>"; };
+		A5F3AC081D16DC1B00E17E31 /* UISlider+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+RAC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +294,8 @@
 			children = (
 				A57E25841C9D848200A5CB03 /* UITextField+RAC.swift */,
 				A52049041C9DD1D800FFDDF3 /* UITextView+RAC.swift */,
+				A5F3AC061D16DAD900E17E31 /* UIStepper+RAC.swift */,
+				A5F3AC081D16DC1B00E17E31 /* UISlider+RAC.swift */,
 				A541674C1CF85B21002F4BA8 /* NSNotificationCenter+RAC.swift */,
 			);
 			path = Signals;
@@ -547,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5F3AC071D16DAD900E17E31 /* UIStepper+RAC.swift in Sources */,
 				A57E25881C9D848200A5CB03 /* UITextField+RAC.swift in Sources */,
 				A541674D1CF85B21002F4BA8 /* NSNotificationCenter+RAC.swift in Sources */,
 				A57E25861C9D848200A5CB03 /* UIControl+RAC.swift in Sources */,
@@ -554,6 +561,7 @@
 				A57E25871C9D848200A5CB03 /* UIView+RAC.swift in Sources */,
 				A541674F1CF85F74002F4BA8 /* Text+RAC.swift in Sources */,
 				A57E25851C9D848200A5CB03 /* LazyProperties.swift in Sources */,
+				A5F3AC091D16DC1B00E17E31 /* UISlider+RAC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,10 @@ public struct AssociationKey {
     /// The key used for the `rac_enabled` property on `UIControl`s.
     public static var enabled:UInt8 = 0
     
+    /// The key used for the `rac_value` property on `UIStepper`s and `UISlider`.
+    public static var value:UInt8 = 0
+    
+    
     // MARK: Text Properties
     
     /// The key used for the `rac_Text` property on `UILabel`s, `UITextField`s and `UITextView`s.
