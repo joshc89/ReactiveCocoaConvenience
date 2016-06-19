@@ -49,7 +49,7 @@ public protocol ReactiveTextProperties: class {
 
 
 /// Adds convenience ReactiveCocoa `MutableProperty`s for commonly bound UIKit equivalents.
-extension ReactiveTextProperties where Self:TextProperties {
+public extension ReactiveTextProperties where Self:TextProperties {
     
     /// Conformance to `ReactiveTextProperties` using `lazyMutableProperty(_:key:setter:getter:)`.
     public var rac_text: MutableProperty<String?> {
